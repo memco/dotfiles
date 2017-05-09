@@ -11,7 +11,7 @@ fi
 brew update
 
 # Move Brewfile into place
-cp Brewfile ~/
+cp ~/.dotfiles/Brewfile ~/
 
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
@@ -20,11 +20,17 @@ brew bundle
 # Make fish the default shell environment
 chsh -s $(which fish)
 
+# Install fish config
+cp ~/.dotfiles/config.fish ~/.config/fish/
+
 # Install oh-my-fish
 curl -L https://get.oh-my.fish | fish
 
+# Install my-sushi
+cp ~/.dotfiles/omf-mysushi ~/.local/share/omf/themes/
+
 # Use Sushi theme
-omf install sushi | fish
+omf theme omf-mysushi | fish
 
 # Install global Composer packages
 /usr/local/bin/composer global require laravel/installer laravel/lumen-installer laravel/valet tightenco/jigsaw spatie/http-status-check bramus/mixed-content-scan laravel/spark-installer
@@ -38,6 +44,11 @@ npm install --global yarn
 # Create a Sites directory
 # This is a default directory for macOS user accounts but doesn't comes pre-installed
 mkdir $HOME/Sites
+
+# Start Web Services
+brew services start postgresql
+brew services start mariadb
+sudo brew services start dnsmasq
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
