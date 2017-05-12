@@ -32,6 +32,7 @@ brew 'homebrew/php/composer'
 brew 'homebrew/php/php71', args: ['with-debug']
 cask 'iterm2'
 cask 'mysqlworkbench'
+cask 'openemu'
 cask 'qlcolorcode'
 cask 'qlmarkdown'
 cask 'qlstephen'
