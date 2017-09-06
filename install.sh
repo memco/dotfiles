@@ -40,6 +40,7 @@ $HOME/.composer/vendor/bin/valet install
 
 # Install global NPM packages
 npm install --global yarn
+npm install -g reveal-md 
 
 # Create a Sites directory
 # This is a default directory for macOS user accounts but doesn't comes pre-installed
