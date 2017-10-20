@@ -32,6 +32,9 @@ cp ~/.dotfiles/omf-mysushi ~/.local/share/omf/themes/
 # Use Sushi theme
 omf theme omf-mysushi | fish
 
+# ZSH Config (Just in case)
+cp ~/.dotfiles/.zshrc ~/
+
 # Install global Composer packages
 /usr/local/bin/composer global require laravel/installer laravel/lumen-installer laravel/valet tightenco/jigsaw spatie/http-status-check bramus/mixed-content-scan laravel/spark-installer
 
