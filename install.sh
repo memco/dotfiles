@@ -11,7 +11,7 @@ fi
 brew update
 
 # Move Brewfile into place
-cp ~/.dotfiles/Brewfile ~/
+ln -s ~/.dotfiles/Brewfile ~/
 
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
@@ -21,7 +21,7 @@ brew bundle
 chsh -s $(which fish)
 
 # Install fish config
-cp ~/.dotfiles/config.fish ~/.config/fish/
+ln -s ~/.dotfiles/config.fish ~/.config/fish/
 
 # Install oh-my-fish
 curl -L https://get.oh-my.fish | fish
@@ -53,6 +53,14 @@ mkdir $HOME/Sites
 brew services start postgresql
 brew services start mariadb
 sudo brew services start dnsmasq
+
+# Vim Setup
+# Install .vimrc
+ln -s  ~/.dotfiles/.vimrc ~/
+
+# Install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Set macOS preferences
 # We will run this last because this will reload the shell
