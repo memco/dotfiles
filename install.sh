@@ -10,6 +10,10 @@ fi
 # Update Homebrew recipes
 brew update
 
+# Can't do bundle install without mas being seutp first
+brew install mas
+mas signin $(mas account)
+
 # Move Brewfile into place
 ln -s ~/.dotfiles/Brewfile ~/
 
@@ -21,19 +25,19 @@ brew bundle
 chsh -s $(which fish)
 
 # Install fish config
-ln -s ~/.dotfiles/config.fish ~/.config/fish/
+ln -s ~/.dotfiles/.config ~/
 
 # Install oh-my-fish
 curl -L https://get.oh-my.fish | fish
 
 # Install my-sushi
-cp ~/.dotfiles/omf-mysushi ~/.local/share/omf/themes/
+ln -s ~/.dotfiles/omf-mysushi ~/.local/share/omf/themes/
 
 # Use Sushi theme
 omf theme omf-mysushi | fish
 
 # ZSH Config (Just in case)
-cp ~/.dotfiles/.zshrc ~/
+ln -s ~/.dotfiles/.zshrc ~/
 
 # Install global Composer packages
 /usr/local/bin/composer global require laravel/installer laravel/lumen-installer laravel/valet tightenco/jigsaw spatie/http-status-check bramus/mixed-content-scan laravel/spark-installer
@@ -50,13 +54,14 @@ npm install -g reveal-md
 mkdir $HOME/Sites
 
 # Start Web Services
-brew services start postgresql
-brew services start mariadb
+# brew services start postgresql
+# brew services start mariadb
 sudo brew services start dnsmasq
 
 # Vim Setup
 # Install .vimrc
 ln -s  ~/.dotfiles/.vimrc ~/
+ln -s  ~/.dotfiles/.vim ~/
 
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

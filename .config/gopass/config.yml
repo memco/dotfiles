@@ -1,0 +1,13 @@
+root:
+  askformore: false
+  autoimport: true
+  autosync: true
+  cliptimeout: 45
+  noconfirm: false
+  nopager: false
+  path: /Users/michael/.password-store
+  safecontent: false
+  usesymbols: false
+  nocolor: false
+mounts: {}
+version: 1.6.2
