@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Setting up your Mac..."
+echo "Setting up Mac..."
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
@@ -11,33 +11,35 @@ fi
 brew update
 
 # Can't do bundle install without mas being seutp first
-brew install mas
+if test ! $(which mas); then
+	brew install mas
+fi
 mas signin $(mas account)
 
 # Move Brewfile into place
-ln -s ~/.dotfiles/Brewfile ~/
+ln -fs ~/.dotfiles/Brewfile ~/
 
 # Install all our dependencies with bundle (See Brewfile)
 brew tap homebrew/bundle
 brew bundle
 
 # Install fish config
-ln -s ~/.dotfiles/.config ~/
+ln -fs ~/.dotfiles/.config ~/
 
 # Install oh-my-fish
 curl -L https://get.oh-my.fish | fish
 
 # Install my-sushi
-ln -s ~/.dotfiles/omf-mysushi ~/.local/share/omf/themes/
-
-# Make fish the default shell environment
-chsh -s $(which fish)
+ln -fs ~/.dotfiles/omf-mysushi ~/.local/share/omf/themes/
 
 # Use Sushi theme
 omf theme omf-mysushi | fish
 
+# Make fish the default shell environment
+chsh -s $(which fish)
+
 # ZSH Config (Just in case)
-ln -s ~/.dotfiles/.zshrc ~/
+ln -fs ~/.dotfiles/.zshrc ~/
 
 # Install global Composer packages
 /usr/local/bin/composer global require laravel/installer laravel/lumen-installer laravel/valet tightenco/jigsaw spatie/http-status-check bramus/mixed-content-scan laravel/spark-installer
@@ -60,8 +62,8 @@ sudo brew services start dnsmasq
 
 # Vim Setup
 # Install .vimrc
-ln -s  ~/.dotfiles/.vimrc ~/
-ln -s  ~/.dotfiles/.vim ~/
+ln -fs  ~/.dotfiles/.vimrc ~/
+ln -fs  ~/.dotfiles/.vim ~/
 
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
