@@ -21,9 +21,6 @@ ln -s ~/.dotfiles/Brewfile ~/
 brew tap homebrew/bundle
 brew bundle
 
-# Make fish the default shell environment
-chsh -s $(which fish)
-
 # Install fish config
 ln -s ~/.dotfiles/.config ~/
 
@@ -32,6 +29,9 @@ curl -L https://get.oh-my.fish | fish
 
 # Install my-sushi
 ln -s ~/.dotfiles/omf-mysushi ~/.local/share/omf/themes/
+
+# Make fish the default shell environment
+chsh -s $(which fish)
 
 # Use Sushi theme
 omf theme omf-mysushi | fish
